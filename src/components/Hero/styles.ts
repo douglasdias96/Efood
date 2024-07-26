@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const HeroContainer = styled.div`
-  background-image: url('src/public/assets/images/Vector.png');
+  background-image: url('assets/images/Vector.png');
   width:100%;
   height:380px;
   display:flex;

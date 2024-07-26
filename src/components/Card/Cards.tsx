@@ -16,14 +16,14 @@ const Cards = () => {
           <CardMedia
             component='img'
             height='217'
-            image="src/public/assets/images/sushi.png"
+            image="assets/images/sushi.png"
           />
           <CardContent>
             <CardTitle>
               <h3>Hioki Sushi</h3>
               <CardIcon>
                 <p>4.9</p>
-                <img src="src/public/assets/images/estrela.png" />
+                <img src="assets/images/estrela.png" />
               </CardIcon>
             </CardTitle>
             <Typography variant="body2" >
