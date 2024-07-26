@@ -7,6 +7,10 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing:border-box;
   }
 
+  body{
+    background-color:#FFF8F1;
+  }
+
   .container {
     max-width: 1024px;
     width:100%;

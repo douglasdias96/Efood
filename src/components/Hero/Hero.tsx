@@ -5,7 +5,7 @@ const Hero = () => {
   return (
     <HeroContainer>
 
-      <img src='../../public/assets/images/logo.png' />
+      <img src='src/public/assets/images/logo.png' />
       <p>Viva experiências gastronômicas<br/> no conforto da sua casa</p>
 
     </HeroContainer>
