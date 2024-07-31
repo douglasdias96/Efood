@@ -11,7 +11,6 @@ import axios from 'axios';
 
 const Products = () => {
   const [restaurantes, setRestaurantes] = useState<Menu[]>([])
-  const [isLoading, setIsLoading] = useState<boolean>(false)
 
   const getPost = async () => {
     try {
@@ -36,10 +35,10 @@ const Products = () => {
     getPost()
   }, [])
   return (
-
+// {isLoading ? <>carregando...</> : 
     <div className="container">
       <Box margin={1} display={'flex'} flexDirection={'column'} marginTop={6}  >
-        {isLoading ? <>carregando...</> : <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 1, md: 3 }} >
+        <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 1, md: 3 }} >
 
           {restaurantes.map((menu) => (
             <Grid key = { menu.id } xs = { 12} lg = { 6} md = { 6} >
@@ -47,7 +46,7 @@ const Products = () => {
             </Grid>
           ))}
 
-      </Grid>}
+      </Grid>
     </Box>
     </div >
 
