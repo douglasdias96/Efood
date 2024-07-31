@@ -1,43 +1,62 @@
-import { Card, CardActionArea, CardActions, CardContent, CardMedia, ThemeProvider, Typography } from "@mui/material"
+import { Card as MuiCard, CardActionArea, CardActions, CardContent, CardMedia, ThemeProvider, Typography } from "@mui/material"
 import { CardIcon, CardTitle, Info } from "./styles"
 import { ColorTheme } from '../../Themes/ColorTheme'
 import Button from "../Button/Button"
 import Tag from "../Tags/Tags"
 
-const Cards = () => {
+
+
+import LogoStar from '../../assets/images/estrela.png'
+import { Menu } from "../../models/interface"
+import { Link } from "react-router-dom"
+
+
+const Cards: React.FC<{item: Menu}> = ({item}) => {
+  const {titulo, tipo, avaliacao, capa, descricao, id, destacado} = item
+  const getDescricao = (descricao: string) => {
+    if (descricao.length > 230) {
+      return descricao.slice(0, 229) + '...'
+    }
+    return descricao
+  }
   return (
     <ThemeProvider theme={ColorTheme}>
-      <Card sx={{ maxWidth: 472}}>
-        <CardActionArea>
+      <MuiCard sx={{ maxWidth: 472}}>
+        <CardActionArea key={id}>
+          
           <Info>
-          <Tag>Destaque da Semana</Tag>
-          <Tag>Japonesa</Tag>
+          {destacado && <Tag>Destaque da semana</Tag>}
+          <Tag>{tipo}</Tag>
           </Info>
           <CardMedia
             component='img'
             height='217'
-            image="assets/images/sushi.png"
+            image={capa}
           />
           <CardContent>
             <CardTitle>
-              <h3>Hioki Sushi</h3>
+              <h3>{titulo}</h3>
               <CardIcon>
-                <p>4.9</p>
-                <img src="assets/images/estrela.png" />
+                <p>{avaliacao}</p>
+                <img src={LogoStar} />
               </CardIcon>
             </CardTitle>
             <Typography variant="body2" >
-              Peça já o melhor da culinária japonesa no conforto da sua casa! Sushis frescos, sashimis deliciosos e pratos quentes irresistíveis. Entrega rápida, embalagens cuidadosas e qualidade garantida.Experimente o Japão sem sair do lar com nosso delivery!
+              {getDescricao(descricao)}
             </Typography>
           </CardContent>
         </CardActionArea>
         <CardActions>
-          <Button />
+          <Link to={`/Efood/restaurantes/${id}`} >
+            <Button />
+          </Link>
         </CardActions>
-      </Card>
+      </MuiCard>
     </ThemeProvider>
   )
 }
+
+// https://fake-api-tau.vercel.app/api/efood/restaurantes/${cardapio}
 
 // Width
 // 472px

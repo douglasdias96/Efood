@@ -1,3 +1,4 @@
+
 import styled from "styled-components";
 
 export const ColorButton = styled.button`
@@ -10,4 +11,5 @@ export const ColorButton = styled.button`
   line-height: 16px;
   border: none;
   color:#fff;
+  cursor: pointer;
 `

@@ -1,7 +1,8 @@
 import styled from "styled-components";
+import HeroImage from '../../assets/images/Vector.png'
 
 export const HeroContainer = styled.div`
-  background-image: url('assets/images/Vector.png');
+  background-image:url(${HeroImage});
   width:100%;
   height:380px;
   display:flex;

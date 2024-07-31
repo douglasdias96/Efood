@@ -1,14 +1,21 @@
-import Hero from "./components/Hero/Hero";
-import Products from "./components/Products/Products";
+
+import Footer from "./components/Footer/Footer";
+import Rotas from "./routes";
 import { GlobalStyle } from "./style";
+
+import { BrowserRouter, Outlet} from 'react-router-dom';
+
+
+
+
 
 export default function App() {
   return (
-    <>
-      <Hero />
-      <Products />
+    <div>
       <GlobalStyle />
-    </>
+      <Outlet />
+      <Footer />
+    </div>
   )
 }
 
