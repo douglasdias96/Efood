@@ -324,7 +324,7 @@ Error generating stack: `+i.message+`
     background-color:#E66767;
     border:1px solid #FFEBD9;
   }
-`,b4=({item:e})=>{const{descricao:t,foto:n,id:r,nome:o}=e,i=a=>a.length>250?a.slice(0,249)+"...":a;return T.jsx("div",{className:"container",children:T.jsx(Up,{theme:VT,children:T.jsx(sw,{sx:{width:320,backgroundColor:"#E66767",marginBottom:"32px"},children:T.jsxs(lw,{children:[T.jsx(uw,{component:"img",height:"167",image:n}),T.jsx(k4,{children:T.jsx("h3",{children:o})}),T.jsxs(R4,{className:"container",children:[T.jsx(iw,{variant:"body2",margin:"8px",fontSize:14,lineHeight:"22px",children:i(t)}),T.jsx(tT,{variant:"outlined",className:"btn",children:"adicionar ao carrinho"})]})]},r)})})})},_4=wt.div`
+`,b4=({item:e})=>{const{descricao:t,foto:n,id:r,nome:o}=e,i=a=>a.length>200?a.slice(0,199)+"...":a;return T.jsx("div",{className:"container",children:T.jsx(Up,{theme:VT,children:T.jsx(sw,{sx:{width:320,backgroundColor:"#E66767",marginBottom:"32px"},children:T.jsxs(lw,{children:[T.jsx(uw,{component:"img",height:"167",image:n}),T.jsx(k4,{children:T.jsx("h3",{children:o})}),T.jsxs(R4,{className:"container",children:[T.jsx(iw,{variant:"body2",margin:"8px",fontSize:14,lineHeight:"22px",children:i(t)}),T.jsx(tT,{variant:"outlined",className:"btn",children:"adicionar ao carrinho"})]})]},r)})})})},_4=wt.div`
   background-image: url(${Y1});
   width:100%;
   height:186px;
