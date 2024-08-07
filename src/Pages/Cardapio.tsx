@@ -5,13 +5,15 @@ import CardMenu from '../components/CardapioMenu/CardMenu';
 import { useParams } from 'react-router-dom';
 import { CardapioItem } from '../models/interface';
 import HeaderCardapio from '../components/HeaderCardapio/HeaderCardapio';
+import SkeletonItems from '../components/Skeleton/SkeletonItems';
 
 const App: React.FC = () => {
   const [cardapio, setCardapio] = useState<CardapioItem[]>([]);
   const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true)
 
   const { id } = useParams();
-  
+
 
   useEffect(() => {
     const fetchCardapio = async () => {
@@ -27,9 +29,11 @@ const App: React.FC = () => {
         } else {
           throw new Error('Dados retornados não são um array de cardápio');
         }
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } catch (error: any) {
         setError(error.message);
+      } finally {
+        setLoading(false)
       }
     };
 
@@ -42,19 +46,28 @@ const App: React.FC = () => {
 
   return (
     <>
-    <HeaderCardapio />
-    <div className="container">
-      <ThemeProvider theme={ColorTheme}>
-        <Grid container spacing={2}>
-          {cardapio.map((item) => (
-            <Grid item xs={12} sm={6} md={4} key={item.id}>
-              <CardMenu item={item} />
-            </Grid>
-          ))}
-        </Grid>
-      </ThemeProvider>
-    </div>
-  
+      <HeaderCardapio />
+
+      <div className="container">
+        <ThemeProvider theme={ColorTheme}>
+          <Grid container spacing={2}>
+            {loading ? Array.from(new Array(6)).map((_, index) => (
+              <SkeletonItems key={index} />
+            ))
+
+              :
+              (
+                cardapio.map((item) => (
+                  <Grid item xs={12} sm={6} md={4} key={item.id}>
+                    <CardMenu item={item} />
+                  </Grid>
+                ))
+              )
+            }
+          </Grid>
+        </ThemeProvider>
+      </div>
+
     </>
   );
 };

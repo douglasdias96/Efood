@@ -7,6 +7,7 @@ const PaginaHome = () => {
     <div>
       <Hero />
       <Products />
+      
     </div>
   )
 }

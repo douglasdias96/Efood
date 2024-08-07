@@ -2,7 +2,6 @@ import styled from "styled-components";
 import Vector from '../../assets/images/Vector.png'
 
 
-
 export const Header = styled.div`
   background-image: url(${Vector});
   width:100%;
@@ -11,7 +10,6 @@ export const Header = styled.div`
   justify-content:space-around;
   align-items:center;
   color:#E66767;
-
 
   img{
     max-width:125px;
@@ -23,8 +21,9 @@ export const Header = styled.div`
     font-weight:900
   }
 
-`
+  @media (max-width: 768px) {
+    display:flex;
+    flex-direction:column;
+  }
 
-export const Banner = styled.div`
-  height: 280px;
 `

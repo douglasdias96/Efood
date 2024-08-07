@@ -9,6 +9,7 @@ import App from './App.tsx'
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
+
 import Home from './Pages/Home.tsx'
 import Cardapio from './Pages/Cardapio.tsx'
 

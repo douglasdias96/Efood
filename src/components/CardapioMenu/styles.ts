@@ -14,6 +14,7 @@ export const CardTitle = styled.div`
     line-height:18px;
     margin:8px;
   }
+  
 
 `
 
@@ -57,4 +58,10 @@ export const DivContainer = styled.div`
     background-color:#E66767;
     border:1px solid #FFEBD9;
   }
+
+  
+`
+export const ImgModal = styled.img`
+  width:100%;
+  height:100%;
 `
