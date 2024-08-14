@@ -2,46 +2,28 @@
 import Grid from '@mui/material/Unstable_Grid2';
 import Box from '@mui/material/Box';
 import Cards from '../Card/Cards';
-import { useEffect, useState } from 'react';
-import { Menu } from '../../models/interface';
-import axios from 'axios';
 import CardSketeleton from '../Skeleton/Sketeleton';
-
-
+import { useGetRestaurantesQuery } from '../../services/api';
 
 
 const Products = () => {
-  const [restaurantes, setRestaurantes] = useState<Menu[]>([])
-  const [loading, setLoading] = useState(true)
+  
+  const {data, isLoading} = useGetRestaurantesQuery()
 
-
-  const getPost = async () => {
-    try {
-      const responde = await axios.get('https://fake-api-tau.vercel.app/api/efood/restaurantes')
-      const data = await responde.data
-
-      setRestaurantes(data)
-
-    } catch (error) {
-      console.log(error)
-    } finally {
-      setLoading(false)
-    }
+  if (!data) {
+    return <div>erro</div>
   }
 
-  useEffect(() => {
-    getPost()
-  }, [])
   return (
     <div className="container">
       <Box margin={1} display={'flex'} flexDirection={'column'} marginTop={6}  >
         <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 1, md: 3 }} >
-          {loading ? Array.from(new Array(6)).map((_, index) => (
+          {isLoading ? Array.from(new Array(6)).map((_, index) => (
             <CardSketeleton key={index} />
           ))
             :
             (
-              restaurantes.map((menu) => (
+              Array.isArray(data) && data.map((menu) => (
                 <Grid key={menu.id} xs={12} lg={6} md={6} >
                   <Cards item={menu} />
                 </Grid>

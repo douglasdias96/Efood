@@ -4,15 +4,15 @@ import { ColorTheme } from '../../Themes/ColorTheme'
 import Button from "../Button/Button"
 import Tag from "../Tags/Tags"
 
-
-
 import LogoStar from '../../assets/images/estrela.png'
 import { Menu } from "../../models/interface"
 import { Link } from "react-router-dom"
 
 
-const Cards: React.FC<{item: Menu}> = ({item}) => {
-  const {titulo, tipo, avaliacao, capa, descricao, id, destacado} = item
+const Cards: React.FC<{ item: Menu }> = ({ item }) => {
+
+
+  const { titulo, tipo, avaliacao, capa, descricao, id, destacado } = item
   const getDescricao = (descricao: string) => {
     if (descricao.length > 230) {
       return descricao.slice(0, 229) + '...'
@@ -21,12 +21,12 @@ const Cards: React.FC<{item: Menu}> = ({item}) => {
   }
   return (
     <ThemeProvider theme={ColorTheme}>
-      <MuiCard sx={{ maxWidth: 472}}>
+      <MuiCard sx={{ maxWidth: 472 }}>
         <CardActionArea key={id}>
-          
+
           <Info>
-          {destacado && <Tag>Destaque da semana</Tag>}
-          <Tag>{tipo}</Tag>
+            {destacado && <Tag>Destaque da semana</Tag>}
+            <Tag>{tipo}</Tag>
           </Info>
           <CardMedia
             component='img'
@@ -48,7 +48,7 @@ const Cards: React.FC<{item: Menu}> = ({item}) => {
         </CardActionArea>
         <CardActions>
           <Link to={`/Efood/restaurantes/${id}`} >
-            <Button />
+            <Button/>
           </Link>
         </CardActions>
       </MuiCard>

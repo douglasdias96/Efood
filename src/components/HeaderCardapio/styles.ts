@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Vector from '../../assets/images/Vector.png'
+import { Link } from "react-router-dom";
 
 
 export const Header = styled.div`
@@ -21,9 +22,17 @@ export const Header = styled.div`
     font-weight:900
   }
 
+  a{
+    cursor: pointer;
+  }
+
   @media (max-width: 768px) {
     display:flex;
     flex-direction:column;
   }
 
+`
+
+export const Links = styled(Link)`
+  color: #E66767;
 `

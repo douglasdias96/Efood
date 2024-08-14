@@ -1,47 +1,19 @@
-import React, { useEffect, useState } from 'react';
+
 import { ThemeProvider, Grid } from '@mui/material';
 import { ColorTheme } from '../Themes/ColorTheme';
 import CardMenu from '../components/CardapioMenu/CardMenu';
 import { useParams } from 'react-router-dom';
-import { CardapioItem } from '../models/interface';
 import HeaderCardapio from '../components/HeaderCardapio/HeaderCardapio';
 import SkeletonItems from '../components/Skeleton/SkeletonItems';
 
-const App: React.FC = () => {
-  const [cardapio, setCardapio] = useState<CardapioItem[]>([]);
-  const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true)
+import { useGetCardapioQuery } from '../services/api'
 
-  const { id } = useParams();
+const App = () => {
+  const { id } = useParams()
+  const { data, isLoading } = useGetCardapioQuery(id!)
 
-
-  useEffect(() => {
-    const fetchCardapio = async () => {
-      try {
-        const response = await fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`);
-        if (!response.ok) {
-          throw new Error(`Erro na rede: ${response.status}`);
-        }
-        const data = await response.json();
-        console.log(data); // Verifique a estrutura dos dados
-        if (data && Array.isArray(data.cardapio)) {
-          setCardapio(data.cardapio);
-        } else {
-          throw new Error('Dados retornados não são um array de cardápio');
-        }
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      } catch (error: any) {
-        setError(error.message);
-      } finally {
-        setLoading(false)
-      }
-    };
-
-    fetchCardapio();
-  }, [id]);
-
-  if (error) {
-    return <div>Erro: {error}</div>;
+  if (!data) {
+    return <div>Erro</div>;
   }
 
   return (
@@ -51,13 +23,13 @@ const App: React.FC = () => {
       <div className="container">
         <ThemeProvider theme={ColorTheme}>
           <Grid container spacing={2}>
-            {loading ? Array.from(new Array(6)).map((_, index) => (
+            {isLoading ? Array.from(new Array(6)).map((_, index) => (
               <SkeletonItems key={index} />
             ))
 
               :
               (
-                cardapio.map((item) => (
+                data.cardapio.map((item) => (
                   <Grid item xs={12} sm={6} md={4} key={item.id}>
                     <CardMenu item={item} />
                   </Grid>
