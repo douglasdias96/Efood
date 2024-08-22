@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { Menu } from "../models/interface";
+
 
 const api = createApi({
   baseQuery: fetchBaseQuery({
@@ -11,7 +11,8 @@ const api = createApi({
     }),
     getCardapio: builder.query<Menu, string> ({
       query: (id) => `restaurantes/${id}`
-    })
+    }),
+    
   })
 })
 

@@ -1,5 +1,4 @@
 import { CardActionArea, ThemeProvider, Card as MuiCard, CardMedia, Typography } from '@mui/material';
-import { CardapioItem, Menu } from '../../models/interface';
 import { ColorTheme2 } from '../../Themes/ColorTheme';
 import { CardTitle, DivContainer, ImgModal, Button } from './styles';
 import { Box, Modal as DivModal } from '@mui/material';

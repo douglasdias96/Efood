@@ -1,10 +1,12 @@
 import { Imagem, Tag } from './styles';
 import { Skeleton } from '@mui/material';
-import { useGetRestaurantesQuery } from '../../services/api';
+import { useGetCardapioQuery} from '../../services/api';
+import { useParams } from 'react-router-dom';
 
 
 const Banner = () => {
-const {data: restaurantes, isLoading} = useGetRestaurantesQuery()
+  const { id } = useParams()
+  const { data: restaurantes, isLoading } = useGetCardapioQuery(id!)
 
 
   if (!restaurantes) {
@@ -12,14 +14,21 @@ const {data: restaurantes, isLoading} = useGetRestaurantesQuery()
   }
 
   return (
-    <Imagem style={{ backgroundImage: `url(${restaurantes.capa})` }}>
-      <div className="container">
-        <Tag>
-          <p>{restaurantes.tipo}</p>
-          <h3>{restaurantes.titulo}</h3>
-        </Tag>
-      </div>
-    </Imagem>
+    <>
+      {isLoading ? (
+        <Skeleton variant='rectangular' width={'100%'} height={280} />
+      ) : (
+        <Imagem style={{ backgroundImage: `url(${restaurantes.capa})` }}>
+          <div className="container">
+            <Tag>
+              <p>{restaurantes.tipo}</p>
+              <h3>{restaurantes.titulo}</h3>
+            </Tag>
+          </div>
+        </Imagem>
+
+      )}
+    </>
   );
 };
 

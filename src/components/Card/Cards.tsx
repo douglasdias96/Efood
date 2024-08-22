@@ -5,7 +5,7 @@ import Button from "../Button/Button"
 import Tag from "../Tags/Tags"
 
 import LogoStar from '../../assets/images/estrela.png'
-import { Menu } from "../../models/interface"
+
 import { Link } from "react-router-dom"
 
 
