@@ -7,16 +7,12 @@ import { useGetRestaurantesQuery } from '../../services/api';
 
 
 const Products = () => {
-  
-  const {data, isLoading} = useGetRestaurantesQuery()
 
-  if (!data) {
-    return <div>erro</div>
-  }
+  const { data, isLoading } = useGetRestaurantesQuery()
 
   return (
     <div className="container">
-      <Box margin={1} display={'flex'} flexDirection={'column'} marginTop={6}  >
+      <Box margin={1} display={'grid'} flexDirection={'column'} marginTop={6}  >
         <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 1, md: 3 }} >
           {isLoading ? Array.from(new Array(6)).map((_, index) => (
             <CardSketeleton key={index} />

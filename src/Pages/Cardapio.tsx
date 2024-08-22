@@ -12,10 +12,6 @@ const App = () => {
   const { id } = useParams()
   const { data, isLoading } = useGetCardapioQuery(id!)
 
-  if (!data) {
-    return <div>Erro</div>;
-  }
-
   return (
     <>
       <HeaderCardapio />
@@ -29,7 +25,7 @@ const App = () => {
 
               :
               (
-                data.cardapio.map((item) => (
+                data && data.cardapio.map((item) => (
                   <Grid item xs={12} sm={6} md={4} key={item.id}>
                     <CardMenu item={item} />
                   </Grid>
